@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PDF Viewer</title>
+	<!-- Include pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js" integrity="sha512-g4FwCPWM/fZB1Eie86ZwKjOP+yBIxSBM/b2gQAiSVqCgkyvZ0XxYPDEcN2qqaKKEvK6a05+IPL1raO96RrhYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.worker.entry.min.js" integrity="sha512-NJEHr6hlBM4MkVxJu+7FBk+pn7r+KD8rh+50DPglV/8T8I9ETqHJH0bO7NRPHaPszzYTxBWQztDfL6iJV6CQTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.worker.min.js" integrity="sha512-QVzIOQH0mGpLAOwHfVSOGsVjh4UGon7+hQwoqIUHbTMvcyS76Ee3AUDep58mU2TvdkPgzZ4aQqxbZ0v2wsyvpA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf_viewer.min.css" integrity="sha512-srhhMuiYWWC5y1i9GDsrZwGM/+rZn0fsyBW/jYzbmSiwGs8I2iAX9ivxctNznU+WndPgbqtbYECLD8KYgEB3fg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <p id="js-disabled">You need to enable JavaScript to see this page properly.</p>
+    <!--div>
+        <button id="zoomInButton" onclick="zoomIn()">Zoom In</button>
+        <button id="zoomOutButton" onclick="zoomOut()">Zoom Out</button>
+      </div>
+      <div id="pdfContainer"></div-->
+      
+
+	<div>
+	
+		<canvas id="pdf-viewer"></canvas>
+	</div>
+	
+	<!-- Script to load PDF -->
+	<script>
+
+document.getElementById('js-disabled').style.display = 'none';
+
+
+		// PDF file URL
+		const url = './%E5%BE%B7%E5%B7%9E%E7%89%A9%E7%90%86-%E4%B8%AD%E5%AE%8C%E7%B5%90.pdf';
+		
+		// Initialize PDF viewer
+		const pdfjsLib = window['pdfjs-dist/build/pdf'];
+		pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+		
+		// Load PDF
+		pdfjsLib.getDocument(url).promise.then(function(pdf) {
+			// Get the first page of PDF
+			return pdf.getPage(1);
+		}).then(function(page) {
+			// Get the viewport of the PDF page at scale 1.0
+			const viewport = page.getViewport({scale: 1.0});
+			
+			// Set the canvas dimensions to the viewport dimensions
+			const canvas = document.getElementById('pdf-viewer');
+			canvas.width = viewport.width;
+			canvas.height = viewport.height;
+			
+			// Render the PDF page on the canvas
+			page.render({
+				canvasContext: canvas.getContext('2d'),
+				viewport: viewport
+			});
+		});
+	</script>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
