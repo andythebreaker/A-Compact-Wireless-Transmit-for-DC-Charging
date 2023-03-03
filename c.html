@@ -18,9 +18,19 @@
       </div>
       <div id="pdfContainer"></div-->
         <div class="floating-btn">
-            <a href="./a.html">next</a>
+            <a href="./index.html">next</a>
           </div>
-          
+          <div class="floating-btn2">
+			<button onclick="NP(1)">▶</button>
+		  </div>
+		  <div class="floating-btn4">
+			<button onclick="NP(2)">《</button>
+		  </div>
+
+		  <div class="floating-btn3" id="NN">
+			<a>1</a>
+		  </div>
+		  
 
 	<div>
 	
@@ -34,7 +44,7 @@ document.getElementById('js-disabled').style.display = 'none';
 
 
 		// PDF file URL
-		const url = './德州物理-左完結.pdf';
+		const url = './ISWEEEP.pdf';
 		
 		// Initialize PDF viewer
 		const pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -59,6 +69,36 @@ document.getElementById('js-disabled').style.display = 'none';
 				viewport: viewport
 			});
 		});
+
+		function NP(yy) {
+			// PDF file URL
+		//const url = './ISWEEEP.pdf';
+		
+		// Initialize PDF viewer
+		//const pdfjsLib = window['pdfjs-dist/build/pdf'];
+		//pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+		
+		// Load PDF
+		pdfjsLib.getDocument(url).promise.then(function(pdf) {
+			// Get the first page of PDF
+			document.getElementById('NN').innerText=parseInt(document.getElementById('NN').innerText)==13&&yy==1?13:parseInt(document.getElementById('NN').innerText)==1&&yy==2?1:(parseInt(document.getElementById('NN').innerText)+(yy==1?1:-1));
+			return pdf.getPage(parseInt(document.getElementById('NN').innerText));
+		}).then(function(page) {
+			// Get the viewport of the PDF page at scale 1.0
+			const viewport = page.getViewport({scale: 1.0});
+			
+			// Set the canvas dimensions to the viewport dimensions
+			const canvas = document.getElementById('pdf-viewer');
+			canvas.width = viewport.width;
+			canvas.height = viewport.height;
+			
+			// Render the PDF page on the canvas
+			page.render({
+				canvasContext: canvas.getContext('2d'),
+				viewport: viewport
+			});
+		});
+		}
 	</script>
     
     <script src="./index.js"></script>

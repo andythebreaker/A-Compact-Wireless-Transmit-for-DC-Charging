@@ -1,0 +1,79 @@
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #FF6347;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .floating-btn a {
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    display: block;
+  }
+  .floating-btn2 {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    z-index: 999;
+  }
+  
+  .floating-btn2 a {
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    text-decoration: none;
+  }
+  .floating-btn3 {
+    position: fixed;
+    bottom:  20px;
+    left: 20px;
+    background-color: #007bff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    z-index: 999;
+  }
+  
+  .floating-btn3 a {
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    text-decoration: none;
+  }
+  .floating-btn4 {
+    position: fixed;
+    top:  20px;
+    right: 20px;
+    background-color: #007bff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    z-index: 999;
+  }
+  
+  .floating-btn4 a {
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+    text-decoration: none;
+  }
+    
